@@ -13,9 +13,9 @@ function Person(FirstName, LastName, DateOfBirth, Liberal_sc, Libertarian_sc, Pr
 }
 
 var p1 = new Person("Emmanuel", "Macron", "21/12/1977", 80, 70, 80, "", "", "En Marche!", "FR", "#377672");
-var p2 = new Person("Jean-Luc", "Mélenchon", "19/07/1951", 95, 10, 40, "", "", "La France Insoumise - GUE/NGL", "FR", "#b50000");
+var p2 = new Person("Jean-Luc", "MÃ©lenchon", "19/07/1951", 95, 10, 40, "", "", "La France Insoumise - GUE/NGL", "FR", "#b50000");
 var p3 = new Person("Marine", "Le Pen", "05/07/1968", 3, 10, 10, "", "", "FN", "FR", "#1f2c6f");
-var p4 = new Person("François", "Fillon", "04/03/1954", 10, 95, 60, "", "", "La France Insoumise", "FR", "#452887");
+var p4 = new Person("FranÃ§ois", "Fillon", "04/03/1954", 10, 95, 60, "", "", "La France Insoumise", "FR", "#452887");
 var Candidates = [p1, p2, p3, p4];
 if (!Detector.webgl) Detector.addGetWebGLMessage();
 
