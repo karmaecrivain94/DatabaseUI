@@ -89,8 +89,8 @@ function init() {
 
     //controls
     controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.minAzimuthAngle = -Math.PI/2;
-    controls.maxAzimuthAngle = Math.PI/2;
+    controls.minAzimuthAngle = -Math.PI / 2;
+    controls.maxAzimuthAngle = Math.PI / 2;
     controls.addEventListener('end', orbitcheck);
     controls.addEventListener('change', moved);
     controls.target.set(0, 1, 0);
@@ -137,7 +137,7 @@ function createTextLabel() {
         },
         get2DCoords: function (position, camera) {
             var vector = position.project(camera);
-            vector.x = (vector.x + 1) / 2* WIDTH + LEFT + 12;
+            vector.x = (vector.x + 1) / 2 * WIDTH + LEFT + 12;
             vector.y = -(vector.y - 1) / 2 * HEIGHT + TOP - 24;
             return vector;
         }
@@ -197,16 +197,16 @@ function cross(size, x, y, z) {
     var h = size * 0.5;
 
     var geometry = new THREE.Geometry();
-    if(checkforview != "side")
-    geometry.vertices.push(
-        new THREE.Vector3(x, y, -(dimension / 2)),
-        new THREE.Vector3(x, y, dimension / 2)
-    );
-    if(checkforview != "top")
-    geometry.vertices.push(
-        new THREE.Vector3(x, -(dimension / 2), z),
-        new THREE.Vector3(x, (dimension / 2), z)
-    );
+    if (checkforview != "side")
+        geometry.vertices.push(
+            new THREE.Vector3(x, y, -(dimension / 2)),
+            new THREE.Vector3(x, y, dimension / 2)
+        );
+    if (checkforview != "top")
+        geometry.vertices.push(
+            new THREE.Vector3(x, -(dimension / 2), z),
+            new THREE.Vector3(x, (dimension / 2), z)
+        );
     geometry.vertices.push(
         new THREE.Vector3(-(dimension / 2), y, z),
         new THREE.Vector3(dimension / 2, y, z)
@@ -253,7 +253,7 @@ function orbitcheck() {
         checkforview = "side";
         console.log("SIDE");
         for (i = 0; i < points.length; i++) {
-                new TWEEN.Tween(points[i].position).to({ z: 256 }, 1000).easing(TWEEN.Easing.Exponential.Out).start();
+            new TWEEN.Tween(points[i].position).to({ z: 256 }, 1000).easing(TWEEN.Easing.Exponential.Out).start();
         }
         new TWEEN.Tween(frame.scale).to({ z: 0.0001 }, 600).easing(TWEEN.Easing.Exponential.Out).start();
         new TWEEN.Tween(back.scale).to({ x: 1.4, y: 1.4 }, 600).easing(TWEEN.Easing.Exponential.Out).start();
@@ -263,11 +263,11 @@ function orbitcheck() {
         new TWEEN.Tween(bottom.material).to({ opacity: 0 }, 100).start();
     }
     else if (polar < 0.05) {
-    
+
         console.log("TOP VIEW");
         checkforview = "top";
         for (i = 0; i < points.length; i++) {
-                new TWEEN.Tween(points[i].position).to({ y: 256 }, 1000).easing(TWEEN.Easing.Exponential.Out).start();
+            new TWEEN.Tween(points[i].position).to({ y: 256 }, 1000).easing(TWEEN.Easing.Exponential.Out).start();
         }
         new TWEEN.Tween(frame.scale).to({ y: 0.0001 }, 600).easing(TWEEN.Easing.Exponential.Out).start();
         new TWEEN.Tween(frame.position).to({ y: 256 }, 600).easing(TWEEN.Easing.Exponential.Out).start();
@@ -342,7 +342,7 @@ function AddPoint(label, x, y, z, scene, color) {
     domEvents.addEventListener(mesh, 'mouseover', function (event) {
         var geometryCube = cross(dimension, mesh.position.x, mesh.position.y, mesh.position.z);
         geometryCube.computeLineDistances();
-        crosshair = new THREE.LineSegments(geometryCube, new THREE.LineBasicMaterial({ color: color, linewidth: 1, depthWrite: false, depthTest: false, renderOrder: 3}));
+        crosshair = new THREE.LineSegments(geometryCube, new THREE.LineBasicMaterial({ color: color, linewidth: 1, depthWrite: false, depthTest: false, renderOrder: 3 }));
         scene.add(crosshair);
         text.element.style.opacity = 1;
     }, false)
@@ -352,10 +352,49 @@ function AddPoint(label, x, y, z, scene, color) {
     }, false)
 }
 
-//Sticky headers:
-jQuery(document).ready(function(){
+//Sticky headers + Graphs:
+jQuery(document).ready(function () {
+    NewGraph("../data/GDP.tsv", "unit,s_adj,na_item,geo\\time", ["CP_MNAC,NSA,B1GQ,FR"], "graph-gdp");
+    NewGraph("../data/DEBT.tsv", "unit,sector,na_item,geo\\time", ["MIO_EUR,S13,GD,FR"], "graph-debt");
+    NewGraph("../data/UNEMPLOYMENT.tsv", "age,unit,sex,geo\\time", ["TOTAL,PC_ACT,T,FR","TOTAL,PC_ACT,T,EU28"], "graph-unemployment", 0, 100);
+    NewGraph("../data/POPULATION.tsv", "indic_de,geo\\time", ["JAN,FR"], "graph-population");
     $('#sticky-list').stickySectionHeaders({
-        stickyClass     : 'sticky',
+        stickyClass: 'sticky',
         headlineSelector: 'strong'
+    });
 });
-});
+
+function NewGraph(file, column, row, id, min, max) {
+    d3.tsv(file, function (data) {
+        //var filtered = data.filter(d => d[column] == row);
+        var dataarray = [];
+        //var selectedData = d3.entries(filtered[0]).filter(d => d.key != [column]);
+        row.forEach(function (r) {
+            var selectedData = d3.entries(data.filter(d => d[column] == r)[0]).filter(d => d.key != [column]);
+            dataarray.push(selectedData);
+            var valray = selectedData.map(a => a.value)
+            var tmax = Math.max.apply(Math, valray);
+            var tmin  = Math.min.apply(Math, valray);
+            if (max == undefined || max<tmax) max = tmax;
+            if (min == undefined || min>tmin) min = tmin;
+        });
+
+        MG.data_graphic({
+            animate_on_load: true,
+            data: dataarray,
+            width: 240,
+            height: 128,
+            top: 24,
+            bottom: 0,
+            right: -8,
+            left: -8,
+            area: false,
+            missing_is_hidden: true,
+            min_y: min,
+            max_y: max,
+            target: document.getElementById(id),
+            x_accessor: 'key',
+            y_accessor: 'value'
+        });
+    });
+}

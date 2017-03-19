@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/metricsgraphics.css">
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Vollkorn" rel="stylesheet">
     <link id="favicon" href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -124,10 +125,9 @@
                                     <img src="http://img-3.journaldesfemmes.com/72DCvBHHr_uHU_yJQ5ej7urJuVM=/305x/smart/image-cms/10219948.jpg" />
                                 </div>
                             </td>
-                            <td class="profilebtn">
-                                <h3 class="txt_name">Emmanuel Macron</h3>
-                                <span class="txt_birth">21/12/1977 (39)</span>
-                                <h5 class="txt_party">En Marche!</h5>
+                            <td class="profilebtn"><h3 class="txt_name">Emmanuel Macron</h3>
+                              <span class="txt_birth">21/12/1977 (39)</span>
+                              <h5 class="txt_party">En Marche!</h5>
                                 <a>View profile</a>
                             </td>
                         </tr>
@@ -189,7 +189,51 @@
             </table></div>
         </div>
     </div>
-    
+    <div class="center">
+        <span class="sectionHeader">SELECTED COUNTRY</span>
+    </div>
+    <div class="country-BG">
+       <div class="center country">
+       		<span class="largetext">FRANCE</span>
+       </div>
+    </div>
+    <div class="economy-BG">
+
+      	<table class="center">
+              <span class="subcategory_header">Economy / Society</span>
+        </div>
+      	<div class="center graphlist">
+              <div class="graph_container">
+                  <div id="graph-gdp" class="graph"></div>
+                  <span class="graph_title">GDP</span>
+                  <span class="graph_value">200000€</span>
+                  <div><span class="graph_rating">2nd</span><span class="graph_place"> in europe</span></div>
+                  <div style="margin-top:-12px;"><span class="graph_rating">7th</span><span class="graph_place"> in the world</span></div>
+              </div>
+              <div class="graph_container">
+                  <div id="graph-debt" class="graph"></div>
+                  <span class="graph_title">NATIONAL DEBT</span>
+                  <span class="graph_value">200000€</span>
+                  <div><span class="graph_rating">2nd</span><span class="graph_place"> in europe</span></div>
+                  <div style="margin-top:-12px;"><span class="graph_rating">7th</span><span class="graph_place"> in the world</span></div>
+              </div>
+              <div class="graph_container">
+                  <div id="graph-unemployment" class="graph"></div>
+                  <span class="graph_title">UNEMPLOYMENT</span>
+                  <span class="graph_value">200000€</span>
+                  <div><span class="graph_rating">2nd</span><span class="graph_place"> in europe</span></div>
+                  <div style="margin-top:-12px;"><span class="graph_rating">7th</span><span class="graph_place"> in the world</span></div>
+              </div>
+              <div class="graph_container">
+                  <div id="graph-population" class="graph"></div>
+                  <span class="graph_title">POPULATION</span>
+                  <span class="graph_value">200000€</span>
+                  <div><span class="graph_rating">2nd</span><span class="graph_place"> in europe</span></div>
+                  <div style="margin-top:-12px;"><span class="graph_rating">7th</span><span class="graph_place"> in the world</span></div>
+              </div>
+      	</div>
+          <br></br>
+    </div>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>
         window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')
@@ -202,6 +246,8 @@
     <script src="js/3js/Detector.js"></script>
     <script src="js/3js/libs/stats.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/metricsgraphics.min.js"></script>
 </body>
 
 </html>
