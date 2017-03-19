@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/metricsgraphics.css">
+    <link rel="stylesheet" href="css/nice-select.css">
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Vollkorn" rel="stylesheet">
     <link id="favicon" href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -28,7 +29,7 @@
                 <tbody>
                     <tr>
                         <td style="padding-right:12px;">Country: </td>
-                        <td>
+                        <td style="color:#002F55;">
                             <select>
                             <option>France</option>
                             <option>Germany</option>
@@ -37,7 +38,7 @@
                     </tr>
                     <tr>
                         <td style="padding-right:12px;">Range:</td>
-                        <td>
+                        <td style="color:#002F55;">
                             <select>
                             <option>2017</option>
                             <option>2016</option>
@@ -53,8 +54,7 @@
                             <option>2006</option>
                             <option>2005</option>
                             <option>2004</option>
-                           </select>
-                           -
+                           </select>-
                             <select>
                             <option>2017</option>
                             <option>2016</option>
@@ -199,8 +199,16 @@
     </div>
     <div class="economy-BG">
 
-      	<table class="center">
-              <span class="subcategory_header">Economy / Society</span>
+      	<div class="center">
+              <span class="subcategory_header" >Economy / Society</span>
+              <div class="subcategory_floatright" style="color:#aeaeae;"><span style="color:#fff;opacity:0.5;">Compare with: </span>
+                        <select>
+                            <option>EU total</option>
+                            <option>EU average</option>
+                            <option>World total</option>
+                            <option>World average</option>
+                        </select>
+              </div>
         </div>
       	<div class="center graphlist">
               <div class="graph_container">

@@ -223,7 +223,7 @@ li {
     display:inline-block;
     padding-top:12px;
     width:100%;
-    z-index: 100;
+    z-index: 8;
 }
 #sticky-list > ul strong:after {
     content:' ';
@@ -346,6 +346,10 @@ li {
 	font-family: Montserrat, sans-serif;
 	font-weight: bold;
 	font-size: 26px;
+}
+.subcategory_floatright{
+    margin-top:36px;
+    float:right;
 }
 .graphlist{
     display:flex;

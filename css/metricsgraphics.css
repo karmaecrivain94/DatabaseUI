@@ -196,11 +196,12 @@ tspan.hist-symbol {
 
 .mg-line2-color {
     stroke: white;
-    stroke-dasharray:5;
+    stroke-dasharray:2;
 }
 
 .mg-hover-line2-color {
-    fill: #05b378;
+    stroke: white;
+    stroke-dasharray:5;
 }
 
 .mg-line3-color {

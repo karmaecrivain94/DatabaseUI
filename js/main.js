@@ -354,6 +354,7 @@ function AddPoint(label, x, y, z, scene, color) {
 
 //Sticky headers + Graphs:
 jQuery(document).ready(function () {
+    $('select').niceSelect();
     NewGraph("../data/GDP.tsv", "unit,s_adj,na_item,geo\\time", ["CP_MNAC,NSA,B1GQ,FR"], "graph-gdp");
     NewGraph("../data/DEBT.tsv", "unit,sector,na_item,geo\\time", ["MIO_EUR,S13,GD,FR"], "graph-debt");
     NewGraph("../data/UNEMPLOYMENT.tsv", "age,unit,sex,geo\\time", ["TOTAL,PC_ACT,T,FR","TOTAL,PC_ACT,T,EU28"], "graph-unemployment", 0, 100);
