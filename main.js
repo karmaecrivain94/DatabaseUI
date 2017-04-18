@@ -9,7 +9,7 @@ app.use(express.static('public'));
 //DATABASE ROUTER
 
 var dbRouter = express.Router(); 
-app.use(subdomain('database', dbRouter));
+app.use(dbRouter);
 
 dbRouter.get("/", function(req, res, next) {
     res.sendFile("views/index.ejs", { root : __dirname})
@@ -29,12 +29,12 @@ dbRouter.get("/country/:name", function(req, res, next) {
 })
 
 //MAIN PAGE ROUTER
-var hRouter = express.Router();
-app.use(hRouter);
+//var hRouter = express.Router();
+//app.use(hRouter);
 //TODO add website root
-hRouter.get("/", function(req, res, next) {
-    res.send("website root");
-})
+//hRouter.get("/", function(req, res, next) {
+//    res.send("website root");
+//})
 
 //404 page
 app.use(function (req, res, next) {
