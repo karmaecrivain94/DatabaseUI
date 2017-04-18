@@ -42,6 +42,6 @@ app.use(function (req, res, next) {
 })
 
 //Run server
-app.listen(80, function () {
+app.listen((process.env.PORT || 80)), function () {
   console.log('ActEuropa listening on port 80!')
 })
