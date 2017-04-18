@@ -40,13 +40,8 @@ hRouter.get("/", function(req, res, next) {
 app.use(function (req, res, next) {
   res.status(404).sendFile("public/html/404.html", { root : __dirname})
 })
-app.use(function (req, res, next) {
-41
-  res.status(503).sendFile("public/html/404.html", { root : __dirname})
-42
-})
 
 //Run server
-app.listen(80, function () {
+app.listen((process.env.PORT || 80)), function () {
   console.log('ActEuropa listening on port 80!')
 })
